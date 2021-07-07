@@ -11,3 +11,4 @@ for _ in range(t):
     data = list(map(int, input().split()))
     query = list(map(int, input().split()))
     answer = [find(data, x) for x in query]
+    print(*answer)
