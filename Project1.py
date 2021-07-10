@@ -1,13 +1,33 @@
-bracket = input()
-stack = []
+def bracketing():
 
-if len(bracket) % 2 == 0:
-    for i in bracket:
-        stack += i
-        
+    brackets = input()
 
+    if len(brackets) % 2 == 0:
+        stack = []
+        for bracket in brackets:
+            if bracket in ("(", "{", "["):
+                stack.append(bracket)
+            else:
+                if len(stack) == 0:
+                    return False
+                else:
+                    compare = stack.pop()
+                    if (compare == "(" and bracket == ")") or (compare == "{" and bracket == "}") or (compare == "[" and bracket == "]"):
+                        continue
+                    else:
+                        return False
+        if len(stack) == 0:
+            return True
+        else: 
+            return False
+    else:
+        return False
 
-    print("You're good")
-else:
-    print("No that's not how you do it")
+t = int(input())
+for _ in range(t):
+
+    if bracketing():
+        print("YES")
+    else:
+        print("NO")
 
